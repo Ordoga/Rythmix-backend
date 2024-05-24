@@ -5,7 +5,7 @@ const stations = utilService.readJsonFile('./data/station.json')
 
 export const stationService = {
     query,
-    getStation
+    getStationById
 }
 
 async function query(){
@@ -13,7 +13,7 @@ async function query(){
     return stations
 }
 
-async function getStation(stationId){
+async function getStationById(stationId){
     try{
         const station = stations.find(station => station._id === stationId)
         // TODO : Ask about error handling
