@@ -19,6 +19,8 @@
   },
   "homepage": "https://github.com/Ordoga/backend-spotify-web#readme",
   "dependencies": {
+    "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
     "express": "^4.19.2",
     "nodemon": "^3.1.0"
   }

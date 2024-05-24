@@ -26,13 +26,13 @@ function sortByTitleDescending(a, b) {
   return sortByTitleAscending(b, a)
 }
 
-function makeId(length = 6) {
+function makeId(length = 8) {
   var txt = ""
-  var possible =
+  var characterPoll =
     "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"
 
   for (var i = 0; i < length; i++) {
-    txt += possible.charAt(Math.floor(Math.random() * possible.length))
+    txt += characterPoll.charAt(Math.floor(Math.random() * characterPoll.length))
   }
 
   return txt

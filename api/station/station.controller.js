@@ -1,11 +1,14 @@
 import { stationService } from "./station.service.js"
 
 export async function getStations(req,res) {
-    console.log("Got Stations")
+    const stations = await stationService.query()
+    res.status(200).send(stations)
 }
 
 export async function getStation(req,res) {
-    console.log("Got Station")
+    const stationId = req.params.stationId
+    const station = await stationService.getStation(stationId)
+    res.status(200).send(station)
 }
 
 export async function addStation(req,res) {
