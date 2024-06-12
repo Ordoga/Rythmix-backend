@@ -10,7 +10,9 @@ const {ObjectId} = mongodb
 
 export const stationService = {
     query,
-    getStationById
+    addStation,
+    getStationById,
+    deleteStationById
 }
 
 
@@ -20,8 +22,18 @@ async function query(){
         var stationCursor = await collection.find({})
         const stations = stationCursor.toArray()
         return stations
-    }catch(error){
-        console.log(error)
+    }catch(err){
+        console.log(err)
+    }
+}
+
+async function addStation(station){
+    try{
+        const collection = await dbService.getCollection('station')
+        const response = await collection.insertOne(station)
+        return response
+    }catch(err){
+        console.log(err)
     }
 }
 
@@ -31,6 +43,17 @@ async function getStationById(stationId){
         var station = await collection.findOne({_id : ObjectId.createFromHexString(stationId)})
         console.log(station)
         return station
+    }catch(err){
+        throw err
+    }
+}
+
+async function deleteStationById(stationId){
+    try{
+        const collection = await dbService.getCollection('station')
+        const response = await collection.deleteOne({_id : ObjectId.createFromHexString(stationId)})
+        console.log(response)
+        return response
     }catch(err){
         throw err
     }

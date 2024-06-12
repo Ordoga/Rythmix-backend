@@ -12,7 +12,9 @@ export async function getStation(req,res) {
 }
 
 export async function addStation(req,res) {
-    console.log("Added Station")
+    const station = req.body
+    const response = await stationService.addStation(station)
+    res.status(200).send(response)
 }
 
 export async function updateStation(req,res) {
@@ -20,5 +22,7 @@ export async function updateStation(req,res) {
 }
 
 export async function removeStation(req,res) {
-    console.log("Removed Station")
+    const stationId = req.params.stationId
+    const response = await stationService.deleteStationById(stationId)
+    res.status(200).send(response)
 }
