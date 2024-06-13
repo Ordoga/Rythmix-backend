@@ -3,6 +3,7 @@ import cookieParser from 'cookie-parser'
 import cors from "cors"
 import { stationRoutes } from './api/station/station.routes.js'
 import { authRoutes } from './api/auth/auth.routes.js'
+import { userRoutes } from './api/user/user.route.js'
 
 const port = process.env.PORT || 3030
 
@@ -24,6 +25,7 @@ app.use(express.json())
 app.use(cookieParser())
 
 app.use('/auth', authRoutes)
+app.use('/user', userRoutes)
 app.use('/station', stationRoutes)
 
 app.listen(port, () => console.log(`Server is running on port ${port}`))
