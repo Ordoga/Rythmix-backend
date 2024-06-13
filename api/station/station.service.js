@@ -23,7 +23,10 @@ async function query(filterBy = {txt:'',userId:''}){
             name : { $regex : filterBy.txt, $options: 'i'}
         }
         if(filterBy.userId){
-            criteria.likedByUsers = { $elemMatch: {id : filterBy.userId}}
+            criteria.$or = [
+                {"createdBy.id" : filterBy.userId}, 
+                {"likedByUsers.id": filterBy.userId}
+            ]
         }
         const collection = await dbService.getCollection('station')
         var stationCursor = await collection.find(criteria)
