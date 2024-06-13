@@ -18,7 +18,9 @@ export async function addStation(req,res) {
 }
 
 export async function updateStation(req,res) {
-    console.log("Updated Station")
+    const station = req.body
+    const response = await stationService.updateStation(station)
+    res.status(200).send(response)
 }
 
 export async function removeStation(req,res) {

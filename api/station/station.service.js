@@ -12,6 +12,7 @@ export const stationService = {
     query,
     addStation,
     getStationById,
+    updateStation,
     deleteStationById
 }
 
@@ -43,6 +44,22 @@ async function getStationById(stationId){
         var station = await collection.findOne({_id : ObjectId.createFromHexString(stationId)})
         console.log(station)
         return station
+    }catch(err){
+        throw err
+    }
+}
+
+async function updateStation(station){
+    try{
+        const stationToSave = {
+            name : station.name,
+            songs : station.songs,
+            imgUrl : station.imgUrl,
+            likedByUsers : station.likedByUsers,
+        }
+        const collection = await dbService.getCollection('station')
+        const response = await collection.updateOne({_id: ObjectId.createFromHexString(station._id)}, {$set : stationToSave})
+        return response
     }catch(err){
         throw err
     }
