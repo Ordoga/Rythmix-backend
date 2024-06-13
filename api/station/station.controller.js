@@ -1,7 +1,12 @@
 import { stationService } from "./station.service.js"
 
 export async function getStations(req,res) {
-    const stations = await stationService.query()
+    const filterBy = {
+        txt: req.query.txt || '',
+        userId: req.query.userId || ''
+    }
+    console.log(filterBy)
+    const stations = await stationService.query(filterBy)
     res.status(200).send(stations)
 }
 

@@ -17,10 +17,16 @@ export const stationService = {
 }
 
 
-async function query(){
+async function query(filterBy = {txt:'',userId:''}){
     try{
+        const criteria = {
+            name : { $regex : filterBy.txt, $options: 'i'}
+        }
+        if(filterBy.userId){
+            criteria.likedByUsers = { $elemMatch: {id : filterBy.userId}}
+        }
         const collection = await dbService.getCollection('station')
-        var stationCursor = await collection.find({})
+        var stationCursor = await collection.find(criteria)
         const stations = stationCursor.toArray()
         return stations
     }catch(err){
