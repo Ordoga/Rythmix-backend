@@ -1,12 +1,7 @@
 import { dbService } from "../../services/db.service.js"
 
-// import { utilService } from "../../services/utilService.js"
-
 import mongodb from 'mongodb'
 const {ObjectId} = mongodb
-
-// const stations = utilService.readJsonFile('./data/station.json')
-
 
 export const stationService = {
     query,
@@ -15,7 +10,6 @@ export const stationService = {
     updateStation,
     deleteStationById
 }
-
 
 async function query(filterBy = {txt:'',userId:''}){
     try{
