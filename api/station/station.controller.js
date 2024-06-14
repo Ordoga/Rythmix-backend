@@ -5,13 +5,13 @@ export async function getStations(req,res) {
         txt: req.query.txt || '',
         userId: req.query.userId || ''
     }
-    console.log(filterBy)
     const stations = await stationService.query(filterBy)
     res.status(200).send(stations)
 }
 
 export async function getStation(req,res) {
     const stationId = req.params.stationId
+    console.log(stationId)
     const station = await stationService.getStationById(stationId)
     res.status(200).send(station)
 }

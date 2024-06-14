@@ -25,8 +25,11 @@ async function query(){
 
 async function addUser(user){
     try {
+        const { username, password, fullname } = user
+        const newEmptyUser = _getEmptyUser()
+        const fullUser = {...newEmptyUser, username, password, fullname}
         const collection = await dbService.getCollection('user')
-        const response = await collection.insertOne(user)
+        const response = await collection.insertOne(fullUser)
         return response
     } catch (err) {
         
@@ -73,4 +76,13 @@ async function deleteUserById(userId){
         
     }
 }
+
+
+function _getEmptyUser(){
+    return {
+        imgUrl: "http://some-photo/",
+        likedSongs : []
+      }
+}
+
 

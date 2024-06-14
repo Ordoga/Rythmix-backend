@@ -24,8 +24,8 @@ async function query(filterBy = {txt:'',userId:''}){
         }
         if(filterBy.userId){
             criteria.$or = [
-                {"createdBy.id" : filterBy.userId}, 
-                {"likedByUsers.id": filterBy.userId}
+                {"createdBy._id" : filterBy.userId}, 
+                {"likedByUsers._id": filterBy.userId}
             ]
         }
         const collection = await dbService.getCollection('station')

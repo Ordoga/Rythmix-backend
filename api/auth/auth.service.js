@@ -15,31 +15,36 @@ export const authService = {
 
 async function login(username, password) {
 
+    
     const user = await userService.getUserByUsername(username)
     if (!user) return Promise.reject('Invalid username or password')
-    // TODO: un-comment for real login
-    // const match = await bcrypt.compare(password, user.password)
-    // if (!match) return Promise.reject('Invalid username or password')
+        // TODO: un-comment for real login
+    const match = await bcrypt.compare(password, user.password)
+    if (!match) return Promise.reject('Invalid username or password')
+        
+    console.log('logg')
 
     delete user.password
     user._id = user._id.toString()
     return user
 }
 
-async function signup({username, password}) {
+async function signup({username, password, fullname}) {
+    
     const saltRounds = 10
 
-    if (!username || !password ) return Promise.reject('Missing required signup information')
+    if (!username || !password || !fullname) return Promise.reject('Missing required signup information')
 
     const userExist = await userService.getUserByUsername(username)
     if (userExist) return Promise.reject('Username already taken')
 
     const hash = await bcrypt.hash(password, saltRounds)
-    return userService.addUser({ username, password: hash })
+    const response = await userService.addUser({ username, password: hash , fullname})
+    return response
 }
 
 function getLoginToken(user) {
-    const userInfo = {_id : user._id, fullname: user.fullname, isAdmin: user.isAdmin}
+    const userInfo = {_id : user._id, fullname: user.fullname}
     return cryptr.encrypt(JSON.stringify(userInfo))    
 }
 

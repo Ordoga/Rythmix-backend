@@ -24,8 +24,8 @@ app.use(cors(corsOptions))
 app.use(express.json())
 app.use(cookieParser())
 
-app.use('/auth', authRoutes)
-app.use('/user', userRoutes)
-app.use('/station', stationRoutes)
+app.use('/api/auth', authRoutes)
+app.use('/api/user', userRoutes)
+app.use('/api/station', stationRoutes)
 
 app.listen(port, () => console.log(`Server is running on port ${port}`))
