@@ -61,7 +61,15 @@ async function getUserByUsername(username){
 
 async function updateUser(user){
     try {
-        
+        const userToSave = {
+            fullname : user.fullname,
+            imgUrl : user.imgUrl,
+            likedSongs : user.likedSongs,
+            username : user.username,
+        }
+        const collection = await dbService.getCollection('user')
+        const response = await collection.updateOne({_id: ObjectId.createFromHexString(user._id)}, {$set : userToSave})
+        return response
     } catch (err) {
         
     }

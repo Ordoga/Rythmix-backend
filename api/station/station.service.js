@@ -45,7 +45,6 @@ async function getStationById(stationId){
     try{
         const collection = await dbService.getCollection('station')
         var station = await collection.findOne({_id : ObjectId.createFromHexString(stationId)})
-        console.log(station)
         return station
     }catch(err){
         throw err
@@ -72,7 +71,6 @@ async function deleteStationById(stationId){
     try{
         const collection = await dbService.getCollection('station')
         const response = await collection.deleteOne({_id : ObjectId.createFromHexString(stationId)})
-        console.log(response)
         return response
     }catch(err){
         throw err

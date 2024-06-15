@@ -18,7 +18,10 @@ export async function addUser(req,res){
 }
 
 export async function updateUser(req,res){
-    
+    const user = req.body
+    const response = await userService.updateUser(user)
+    console.log(response)
+    res.status(200).send(response)
 }
 
 export async function deleteUser(req,res){

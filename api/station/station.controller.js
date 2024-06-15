@@ -11,7 +11,6 @@ export async function getStations(req,res) {
 
 export async function getStation(req,res) {
     const stationId = req.params.stationId
-    console.log(stationId)
     const station = await stationService.getStationById(stationId)
     res.status(200).send(station)
 }
