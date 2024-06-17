@@ -7,7 +7,7 @@ export async function getStations(req,res) {
     }
     const stations = await stationService.query(filterBy)
     res.status(200).send(stations)
-}
+    }
 
 export async function getStation(req,res) {
     const stationId = req.params.stationId

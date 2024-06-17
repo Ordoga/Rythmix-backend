@@ -8,7 +8,7 @@ const router = express.Router()
 router.get('/', getStations)
 router.get('/:stationId', getStation)
 router.post('/', requireUser, addStation)
-router.put('/:stationId',validateStationCreatedByUser, updateStation)
+router.put('/:stationId', updateStation)
 router.delete('/:stationId', validateStationCreatedByUser, removeStation)
 
 export const stationRoutes = router
