@@ -1,5 +1,8 @@
 # Rythmix
 
+## Deployment - 
+https://rythmix-music-app.onrender.com/
+
 ## Backend repository for Rythmix
 **Frontend repository:**
 https://github.com/Ordoga/Rythmix
