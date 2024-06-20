@@ -5,10 +5,50 @@
 https://github.com/Ordoga/Rythmix
 
 ![](./public/imgs/Rythmix1.jpeg)
+- **<img src="./public/imgs/Rythmix1.jpeg" alt="Alt Text" width="600" height="400">**: This is the HTML syntax to display an image with a specified width and height.
+
 
 Rythmix is a web application based on Spotify that allows users to access music, create and share playlists, and manage their music preferences. The app utilizes the YouTube Data API for accessing music content and features a React frontend with a Node.js backend. Data is stored using MongoDB Atlas.
 
 ![](./public/imgs/Rythmix2.jpeg)
+- **<img src="./public/imgs/Rythmix2.jpeg" alt="Alt Text" width="600" height="400">**: This is the HTML syntax to display an image with a specified width and height.
+
+## How to use - Installation
+
+To get started with the Rythmix-backend project, follow these steps:
+
+1. **Clone the repository**:
+
+    ```bash
+    git clone https://github.com/Ordoga/Rythmix-backend.git
+    ```
+
+2. **Navigate to the project directory**:
+
+    ```bash
+    cd Rythmix-backend
+    ```
+
+3. **Install dependencies**:
+
+    Make sure you have [Node.js](https://nodejs.org/) installed. Then run:
+
+    ```bash
+    npm install
+    ```
+
+## Usage
+
+To start the development server, use the following command:
+
+```bash
+npm run dev
+```
+
+Server will run on port 3030
+
+Go to "http://localhost:3030" to use app
+
 
 ## Features
 
