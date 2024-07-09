@@ -30,7 +30,7 @@ async function addUser(user){
         const fullUser = {...newEmptyUser, username, password, fullname}
         const collection = await dbService.getCollection('user')
         const response = await collection.insertOne(fullUser)
-        return response
+        return fullUser
     } catch (err) {
         
     }
