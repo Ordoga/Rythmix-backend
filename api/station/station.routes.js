@@ -9,6 +9,7 @@ router.get('/', getStations)
 router.get('/:stationId', getStation)
 router.post('/', requireUser, addStation)
 router.put('/:stationId', updateStation)
-router.delete('/:stationId',validateStationCreatedByUser, removeStation)
+// router.delete('/:stationId',validateStationCreatedByUser, removeStation)
+router.delete('/:stationId', removeStation)
 
 export const stationRoutes = router

@@ -13,6 +13,7 @@ export async function validateStationCreatedByUser(req, res, next) {
 	if (!loggedinUser) return res.status(400).send('Not authenticated')
 	const stationToUpdateId = req.params.stationId
 	const station = await stationService.getStationById(stationToUpdateId)
+	if(!station) return
 	if(station.createdBy._id !== loggedinUser._id) return res.status(400).send('Not authorized')
 	req.loggedinUser = loggedinUser
 	next()

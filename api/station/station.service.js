@@ -69,6 +69,7 @@ async function updateStation(station){
 
 async function deleteStationById(stationId){
     try{
+        console.log(stationId)
         const collection = await dbService.getCollection('station')
         const response = await collection.deleteOne({_id : ObjectId.createFromHexString(stationId)})
         return response
